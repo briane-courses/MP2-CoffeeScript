@@ -1,0 +1,14 @@
+<img src="https://thumb9.shutterstock.com/display_pic_with_logo/1248838/138715376/stock-photo-cute-dinosaur-cartoon-138715376.jpg" height="150px" width="150px">
+
+<h1>{{ user.username}}</h1>
+<h3>Posts: </h3>
+
+<ul>
+	{% for posts in user.posts_set.all %}
+		<li>{{posts.name}}</li>
+		<li> Quantity: {{posts.quantity}}</li>
+		<li> Condition: {{posts.condition}}</li>
+		<br>
+	{% endfor %}
+</ul>
+

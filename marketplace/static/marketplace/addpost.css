@@ -1,0 +1,146 @@
+@font-face {
+    font-family: LeagueSpartan;
+    src: url('fonts/leaguespartan.otf');
+}
+
+@font-face {
+    font-family: Roboto;
+    src: url('fonts/roboto.ttf');
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+}
+
+.containerhead {
+    background-color: #1C2833;
+}
+
+.navbar a, .navbarElements1 a {   
+    text-decoration: none;
+    color: white;
+    font-family: "LeagueSpartan";
+}
+
+.navbarElements1 {
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 10px;
+}
+
+.navbarElements1 a{
+    margin-top: 10px;
+    margin-right: 20px;
+}
+
+.navbarElements2{
+    margin-top: 10px;
+}
+
+.navbarElements2 a{
+    margin-left: 20px;
+}
+
+.navbarElements1 #search {
+    width: 120px;
+    height: 30px;
+    box-sizing: border-box;
+    border: 2px solid black;
+    border-radius: 4px;
+    font-size: 14px;    
+    background-color: white;
+    padding: 10px 10px 10px 10px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+.navbarElements1 #search:focus {
+    width: 200%;
+}
+
+.containerbody {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+	font-family: Roboto;
+	margin-left: 0;
+	
+}
+
+.containerbody .details{
+	display: flex;
+	flex-direction: row;
+	margin-bottom: 10px;
+	justify-content: space-between;
+	margin-left: 0;
+}
+
+.details label {
+	margin: 0px;
+}
+
+.details select {
+	width: 200px;
+	height: 30px;
+}
+
+.postDetails {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 10px solid black;
+    padding: 20px;
+}
+
+.postDetails h1{
+    margin: 0 0 40px 0;
+    font-family: LeagueSpartan;
+    text-align: center;
+}
+
+.postDetails span{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    margin: 0;
+    font-family: Roboto;
+}
+
+.postDetails input {
+    margin-left: 50px;
+    width: 200px;
+    padding: 5px 10px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    margin-right: 40px;
+}
+
+.buttons input{
+    background-color: #1C2833;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-family: Roboto;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.buttons input:hover{
+    background-color: azure;
+    color: black;
+    border: 3px solid black;
+    width: 100%;
+}
+

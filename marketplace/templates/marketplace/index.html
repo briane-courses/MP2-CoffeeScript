@@ -1,0 +1,11 @@
+<html>
+{% if all_users %}
+	<ul>
+		{% for user in all_users %}
+		<li><a href="/marketplace/profile/{{ user.id}}">{{user.username}}</a></li>
+		{% endfor %}
+	</ul>
+{% else %}
+	<h1>Waley</h1>
+{% endif %}
+</html>

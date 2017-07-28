@@ -1,0 +1,174 @@
+@font-face {
+    font-family: LeagueSpartan;
+    src: url('fonts/leaguespartan.otf');
+}
+
+@font-face {
+    font-family: Roboto;
+    src: url('fonts/roboto.ttf');
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+}
+
+.containerhead {
+    background-color: #1C2833;
+}
+
+.navbar a, .navbarElements a {   
+    text-decoration: none;
+    color: white;
+    font-family: "LeagueSpartan";
+}
+
+.navbarElements1 {
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 10px;
+}
+
+.navbarElements1 a{
+    margin-top: 10px;
+    margin-right: 20px;
+}
+
+.navbarElements2{
+    margin-top: 10px;
+}
+
+.navbarElements2 a{
+    margin-left: 20px;
+}
+
+.containerbody {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.containerlogin {
+    border: 5px solid black;
+    border-radius: 5px;
+    background-color: white;
+    width: 35%;
+    margin: 50px 0px;
+}
+
+.loginbox {
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.loginbox h1 {
+    font-family: "LeagueSpartan";
+    color: black;
+}
+
+.loginbox input{
+    padding: 5px 10px 5px 10px;
+}
+
+#accountbox {
+    font-family: "Roboto";
+    color: black;
+    padding: 10px;
+}
+
+.loginbox button {
+    font-family: "Roboto";
+    background-color: rgb(28, 184, 65);
+    border: none;
+    padding: 5px 20px;
+    margin-top: 20px;
+}
+
+#accountbox input {
+    margin-left: 20px;
+}
+
+#accountbox select{
+    padding: 5px 10px;
+    width: 193px;
+}
+
+.detailBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.detailBox span{
+    display: flex;
+    justify-content: space-between;
+}
+
+#buttons button{
+    margin: 20px;
+}
+
+#search {
+    width: 120px;
+    height: 30px;
+    box-sizing: border-box;
+    border: 2px solid black;
+    border-radius: 4px;
+    font-size: 14px;    
+    background-color: white;
+    padding: 10px 10px 10px 10px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+#search:focus {
+    width: 200%;
+}
+
+.details {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin: 20px;
+	font-family: Roboto;
+}
+
+.details input {
+	padding: 5px 10px;
+}
+
+.details select {
+	width: 192px;
+	padding: 5px 10px;
+}
+
+.postDetails {
+	border: 5px solid black;
+	margin-top: 50px;
+	padding: 20px;
+}
+
+.postDetails h1{
+	text-align: center;
+	font-family: LeagueSpartan;
+}
+.regButton {
+	padding: 10px 20px;
+	font-family: Roboto;
+	background-color: rgb(28, 184, 65);
+	color: white;
+	border: none;
+}
+
+.regbox {
+	justify-content: flex-end;
+	padding-left: 300px;
+}

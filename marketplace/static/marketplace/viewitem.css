@@ -1,0 +1,144 @@
+@font-face {
+    font-family: LeagueSpartan;
+    src: url('fonts/leaguespartan.otf');
+}
+
+@font-face {
+    font-family: Roboto;
+    src: url('fonts/roboto.ttf');
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #E8F6F3;
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+}
+.navbar a, .navbarElements1 a {   
+    text-decoration: none;
+    color: white;
+    font-family: "LeagueSpartan";
+}
+
+.navbarElements1 {
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 10px;
+}
+
+.navbarElements1 a{
+    margin-top: 10px;
+    margin-right: 20px;
+}
+
+.navbarElements2{
+    margin-top: 10px;
+}
+
+.navbarElements2 a{
+    margin-left: 20px;
+}
+.containerhead {
+    background-color: #1C2833;
+}
+
+
+input[type=text] {
+    width: 120px;
+    height: 30px;
+    box-sizing: border-box;
+    border: 2px solid black;
+    border-radius: 4px;
+    font-size: 14px;    
+    background-color: white;
+    padding: 10px 10px 10px 10px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+input[type=text]:focus {
+    width: 200%;
+}
+
+.containerbody {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    margin-top: 50px;
+    
+}
+
+.inner {
+    border: 15px solid #F1948A;
+    align-self: center;
+    background-color: #fefefe;
+}
+
+.containerbody #itemImage {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+.image{
+    opacity: 1;
+    display: block;
+    transition: .5s ease;
+    backface-visibility: hidden;
+	width: 500px;
+	height: 500px;
+}
+
+.middle {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 43%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+}
+
+#itemImage:hover .image {
+    opacity: 0.3;
+}
+
+#itemImage:hover .middle {
+    opacity: 1;
+}
+
+.text {
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    padding: 16px 32px;
+    text-decoration: none;
+    font-family: Roboto;
+}
+    
+#details{
+    padding: 20px;
+}
+
+#details h2{
+    text-align: center;
+    font-family: LeagueSpartan;
+    font-size: 40px;
+    margin: 0;
+    padding: 0;
+}
+
+#item {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+	font-family: "Roboto";
+	
+    
+}
+
+

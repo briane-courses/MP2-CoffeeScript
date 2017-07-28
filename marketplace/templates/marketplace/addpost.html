@@ -1,0 +1,57 @@
+{% load staticfiles %}
+<html>
+    <head>
+        <title>NBMarketPlace</title>
+        <link rel="stylesheet" href="{% static 'marketplace/addpost.css' %}">
+    </head>
+
+    <body>
+        <div class="containerhead">
+            <div class="navbar">
+               
+               
+                <div class="navbarElements1">
+                    <a href="/marketplace/home/">Home</a>
+                <form method="POST" class="post-form" enctype='multipart/form-data'>
+					{% csrf_token %}
+					<div class="inputF">{{ form2 }}</div>
+				<button type="submit">Search</button>
+				</form>
+                </div>
+                
+                <div class="navbarElements2">
+					{% if loggeduser %}
+					<a href="/marketplace/addpost">Add a post</a>
+					<a href ="/marketplace/profile/{{ loggeduser.id}}">Hi, {{loggeduser.username}} !</a>
+					<a href="/marketplace/logout/" >Log out</a>
+					{% else %}
+                    <a href="/marketplace/login/">Login</a>
+                    <a href="/marketplace/signup/">Sign Up</a>
+					{% endif %}
+                </div>
+            </div> 
+        </div>
+        
+        <div class="containerbody">
+            <div class="postDetails">
+                <h1>Add an item</h1>
+				<form method="POST" class="post-form" enctype='multipart/form-data'>
+				{% csrf_token %}
+				{% for field in form %}
+				<div class="details">
+					<label>{{ field.label_tag }}</label>
+					<div class="inputF">{{ field }}</div>
+				</div>
+				{% endfor %}
+				<button type="submit">Post!</button>
+				</form>
+            </div>
+        </div>
+        
+        <div class="containerfooter">
+            
+        </div>
+        
+    </body>
+
+</html>
