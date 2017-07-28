@@ -7,8 +7,31 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
 		<script>
 			$(document).ready(function(){
+				$("#container3").hide();
 				
+				$(document).on('click','.text',function(){
+					enlargePhoto();
+                });
+				$(document).on('click','#close',function(){
+					goBack();
+                });
 			});
+			
+			function enlargePhoto(){
+					var photo = '{{posts.thumbnail.url}}';
+					console.log(photo)
+					$(".containerbody").hide();
+                    $("#container3").show();
+					$("#enlargegrid").append('<img id = "photo" src =' + photo + ' height = "800" width = "800" align="middle"> ');
+					
+				
+			}
+			
+			function goBack(){
+				$(".containerbody").show();
+                $("#container3").hide();
+				$("#enlargegrid").empty();
+			}
 		</script>
 	</head>
 
@@ -43,7 +66,7 @@
             <div class="inner">
                 <div id="itemImage">
 					{%if posts.thumbnail %}
-						<img src="{{posts.thumbnail.url}}" class="image" height="700" width="700">
+						<img id = "photo" src="{{posts.thumbnail.url}}" class="image" height="700" width="700">
 					{%else%}
 						<img src={% static "marketplace/images/placeholder.jpg" %}/>
 					{%endif%}
@@ -68,6 +91,12 @@
             </div>    
         </div>
         
+		<div id = "container3">
+		<div id="closegrid">
+            <button id = "close">Go back</button>
+        </div>
+            <div id="enlargegrid"></div>	
+		</div>
         
         
         <div class="containerfooter">
