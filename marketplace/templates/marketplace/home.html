@@ -3,6 +3,26 @@
     <head>
         <title>NBMarketPlace</title>
         <link rel="stylesheet" href="{% static 'marketplace/marketplace.css'%}">
+        <script  src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript">
+            /*
+            $(document).on('change', '#numberz', function(){
+                var num = $('#numberz').get("value");
+            
+            if(num == "10")
+                $("#loop").replaceWith("{% if forloop.counter <= 10 %}");
+            else if(num == "15")
+                $("#loop").replaceWith("{% if forloop.counter <= 15 %}"); 
+            else
+                $("#loop").replaceWith("{% if forloop.counter <= 20 %}");
+                
+                {% endif %}
+                {% endif %}
+                {% endif %}
+                
+                $("#mydiv").load(location.href + " .row");
+            }));
+            */
+        </script>
     </head>
 
     <body>
@@ -30,38 +50,40 @@
                 </div>
             </div> 
         </div>
-        
-        <div class="adjustbar">
+           
             <p>No. of Items: </p>
-            <select>
+            <form method = 'POST'> {% csrf_token %}
+            <select name= "numberz" id="numberz" onchange="this.form.submit()">
                 <option value="10">10</option>
                 <option value="15">15</option>
-                <option value="15">20</option>
+                <option value="20">20</option>
             </select>
-        </div>
+            </form>
+          
+         
         
 		 
         <div class="containerbody">
          
             <div class="row">
                       {% for post in all_posts %} 
-                        <div class="thumbnail">
-                            <div>
-							{% if post.thumbnail %}
-								<a href="/marketplace/viewitem/{{post.id}}/"><img id="productImage" src={{ post.thumbnail.url }}/></a>
-							{% else %}
-								<a href ="/marketplace/viewitem/{{post.id}}/"><img id="productImage" src={% static "marketplace/images/placeholder.jpg" %}/></a>
-							{% endif %}
-							</div>
-                            <div id="productDetails">
-                                <a href="/marketplace/profile/{{post.user.id}}">{{post.user}}</a><br><br>
-                                <h3>{{post.name}}</h3>
-                            </div>
-                            <div class="buttonrow">
-                                
-                                <div class="col-xs-12 col-md-6">
-                                    <button class="btn btn-success" href="#">Add to Cart</button>
+                            <div class="thumbnail">
+                                <div>
+                              {% if post.thumbnail %}
+                                    <a href="/marketplace/viewitem/{{post.id}}/"><img id="productImage" src={{ post.thumbnail.url }}/></a>
+                                {% else %}
+                                    <a href ="/marketplace/viewitem/{{post.id}}/"><img id="productImage" src={% static "marketplace/images/placeholder.jpg" %}/></a>
+                                {% endif %}
                                 </div>
+                                <div id="productDetails">
+                                    <a href="/marketplace/profile/{{post.user.id}}">{{post.user}}</a><br><br>
+                                    <h3>{{post.name}}</h3>
+                                </div>
+                                <div class="buttonrow">
+
+                                    <div class="col-xs-12 col-md-6">
+                                        <button class="btn btn-success" href="#">Add to Cart</button>
+                                    </div>
                             </div>
                         </div>
                       {% endfor %}

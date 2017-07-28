@@ -65,9 +65,9 @@
         <div class="containerbody">
             <div class="inner">
                 <div id="itemImage">
-					{%if posts.thumbnail %}
+					{% if posts.thumbnail %}
 						<img id = "photo" src="{{posts.thumbnail.url}}" class="image" height="700" width="700">
-					{%else%}
+					{% else%}
 						<img src={% static "marketplace/images/placeholder.jpg" %}/>
 					{%endif%}
 						<div class="middle">
