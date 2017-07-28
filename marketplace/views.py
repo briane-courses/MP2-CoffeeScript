@@ -46,7 +46,7 @@ def detail(request, user_id):
 	
 	
 def home(request):
-	all_posts = Posts.objects.all()
+	
 	try:
 		loggeduser = User.objects.get(id=request.session['USERZ'])
 	except (KeyError, User.DoesNotExist):
@@ -55,7 +55,18 @@ def home(request):
 	queryTag = form.save(commit=False)
 	query = form.cleaned_data["tag"]
 	if query != '':
+		all_posts = Posts.objects.all()
 		return render(request, 'marketplace/search.html', {'all_posts':all_posts, 'query':query,'loggeduser':loggeduser, 'form':form})
+	
+	filter_number = 10
+	if request.POST:
+		post_num = request.POST.get("numberz",False)
+		filter_number = int(post_num)
+		print(filter_number)
+		print(type(filter_number))
+		
+	all_posts = Posts.objects.all().order_by('?')[:filter_number]
+	
 	
 	context = {
 		'all_posts': all_posts,
