@@ -8,43 +8,56 @@
     src: url('fonts/roboto.ttf');
 }
 
+@font-face {
+    font-family: Dancing;
+    src: url('fonts/dancing.otf');
+}
+
 body {
     margin: 0;
     padding: 0;
-}
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    padding: 15px;
 }
 
 .containerhead {
     background-color: #1C2833;
 }
+.navbar {
+	display: flex;
+    justify-content: space-between;
+}
 
-.navbar a, .navbarElements a {   
+.navbar a, .navbarElements1 a {   
     text-decoration: none;
     color: white;
-    font-family: "LeagueSpartan";
 }
 
 .navbarElements1 {
     display: flex;
     justify-content: flex-start;
-    margin-left: 10px;
+	padding: 10px 15px;
+
 }
 
 .navbarElements1 a{
-    margin-top: 10px;
     margin-right: 20px;
+	font-family: "Dancing";
+	font-size: 30px;
+}
+
+.navbarElements1:hover{
+	background-color: #618685;
 }
 
 .navbarElements2{
-    margin-top: 10px;
+    display: flex;
+    margin-left: 10px;
+	padding: 25px 35px;
 }
 
+
 .navbarElements2 a{
-    margin-left: 20px;
+	padding: 10px 15px;
+	font-family: LeagueSpartan;
 }
 
 .containerbody {
@@ -151,7 +164,7 @@ body {
 }
 
 .postDetails {
-	border: 5px solid black;
+	border: 15px solid black;
 	margin-top: 50px;
 	padding: 20px;
 }
@@ -171,4 +184,24 @@ body {
 .regbox {
 	justify-content: flex-end;
 	padding-left: 300px;
+}
+
+.buttonbox {
+	margin-top: 25px;
+	display: flex;
+	justify-content: center;
+}
+
+.buttonbox button {
+	background-color: rgb(28, 184, 65);
+	border: none;
+	padding: 5px 15px;
+	font-family: LeagueSpartan;
+}
+
+.buttonbox button:hover{
+	padding: 5px 100px;
+	background-color: white;
+	border: 2px solid rgb(28, 184, 65); 
+	
 }

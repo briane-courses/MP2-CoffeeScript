@@ -8,40 +8,55 @@
     src: url('fonts/roboto.ttf');
 }
 
+@font-face {
+    font-family: Dancing;
+    src: url('fonts/dancing.otf');
+}
+
 body {
     margin: 0;
     padding: 0;
     background-color: #E8F6F3;
 }
+
 .navbar {
-    display: flex;
+	display: flex;
     justify-content: space-between;
-    padding: 15px;
 }
+
 .navbar a, .navbarElements1 a {   
     text-decoration: none;
     color: white;
-    font-family: "LeagueSpartan";
 }
 
 .navbarElements1 {
     display: flex;
     justify-content: flex-start;
-    margin-left: 10px;
+	padding: 10px 15px;
+
 }
 
 .navbarElements1 a{
-    margin-top: 10px;
     margin-right: 20px;
+	font-family: "Dancing";
+	font-size: 30px;
+}
+
+.navbarElements1:hover{
+	background-color: #618685;
 }
 
 .navbarElements2{
-    margin-top: 10px;
+    display: flex;
+    margin-left: 10px;
+	padding: 25px 35px;
 }
 
 .navbarElements2 a{
-    margin-left: 20px;
+	padding: 10px 15px;
+	font-family: LeagueSpartan;
 }
+
 .containerhead {
     background-color: #1C2833;
 }
@@ -73,7 +88,7 @@ input[type=text]:focus {
 }
 
 .inner {
-    border: 15px solid #F1948A;
+    border: 15px solid black;
     align-self: center;
     background-color: #fefefe;
 }

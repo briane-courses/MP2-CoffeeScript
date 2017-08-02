@@ -2,12 +2,13 @@
 <html>
     <head>
         <title>NBMarketPlace</title>
-        <link rel="stylesheet" href="{% static 'marketplace/login.css' %}">
+        <link rel="stylesheet" href="{% static 'marketplace/addpost.css' %}">
     </head>
 
     <body>
         <div class="containerhead">
             <div class="navbar">
+               
                
                 <div class="navbarElements1">
                     <a href="/marketplace/home/">Marketplace</a>
@@ -28,7 +29,7 @@
         
         <div class="containerbody">
             <div class="postDetails">
-				<h1>Log In</h1>
+                <h1>Add an item</h1>
 				<form method="POST" class="post-form" enctype='multipart/form-data'>
 				{% csrf_token %}
 				{% for field in form %}
@@ -37,7 +38,7 @@
 					<div class="inputF">{{ field }}</div>
 				</div>
 				{% endfor %}
-				<div class="buttonbox"><button type="submit">Login</button></div>
+				<div class="buttonbox"><button type="submit">Post!</button></div>
 				</form>
             </div>
         </div>
