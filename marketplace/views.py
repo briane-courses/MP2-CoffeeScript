@@ -173,4 +173,6 @@ def search(request):
 	
 	return render(request, 'marketplace/search.html', {'loggeduser':loggeduser,'form':form})
 
-	
+def makeoffer(request,post_id):
+
+	return render(request, 'marketplace/makeoffer.html', {})

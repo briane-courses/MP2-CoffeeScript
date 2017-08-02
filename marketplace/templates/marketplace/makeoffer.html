@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>NBMarketPlace</title>
-        <link rel="stylesheet" href="{% static 'marketplace/login.css' %}">
+        <link rel="stylesheet" href="{% static 'marketplace/makeoffer.css' %}">
     </head>
 
     <body>
@@ -25,22 +25,22 @@
                 </div>
             </div> 
         </div>
-        
-        <div class="containerbody">
-            <div class="postDetails">
-				<h1>Log In</h1>
-				<form method="POST" class="post-form" enctype='multipart/form-data'>
-				{% csrf_token %}
-				{% for field in form %}
-				<div class="details">
-					{{ field.label_tag }}
-					<div class="inputF">{{ field }}</div>
-				</div>
-				{% endfor %}
-				<div class="buttonbox"><button type="submit">Login</button></div>
+		
+		<div class="containerbody" >
+			<div class="offerbox" >
+				<h1>Make an Offer</h1>
+				<form class="details">
+					<div><select id="selectoffer">
+						<option value="exchange">Exchange Item</option>
+						<option value="exchange">Purchase Item</option>
+					</select></div>
+					<div>Item: <input type="text" name="item" placeholder="Item Name"><div>
+					<div><button type="submit">Submit</button><div>
 				</form>
-            </div>
-        </div>
+				
+			</div>
+		</div>
+        
         
         <div class="containerfooter">
             

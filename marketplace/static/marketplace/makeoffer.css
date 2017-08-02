@@ -62,51 +62,40 @@ body {
 }
 
 .containerbody {
-    display: flex;
+	display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+}
+
+.offerbox {
+	display: flex;
+	flex-direction: column;
+	margin: 20px;
+	width: 300px;
+	border: 15px solid black;
+	padding: 20px;
+	align-items: center;
 }
 
 .details {
 	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	margin: 20px;
+	flex-direction: column;
+	padding: 15px;
+	align-items: center;
 	font-family: Roboto;
 }
 
-.details input {
-	padding: 5px 10px;
-	margin-left: 5px;
-}
-
-.postDetails {
-	border: 15px solid black;
-	margin-top: 50px;
-	padding: 20px;
-}
-
-.postDetails h1{
-	text-align: center;
+.offerbox h1 {
 	font-family: LeagueSpartan;
 }
 
-.buttonbox {
-	display: flex;
-	justify-content: center;
+.details select, .details input, .details button {
+	margin: 10px 0px;
 }
 
-.buttonbox button {
+.details button {
+	margin-left: 80px;
 	background-color: rgb(28, 184, 65);
 	border: none;
 	padding: 5px 15px;
-	font-family: LeagueSpartan;
-}
-
-.buttonbox button:hover{
-	padding: 5px 100px;
-	background-color: white;
-	border: 2px solid rgb(28, 184, 65); 
-	
 }

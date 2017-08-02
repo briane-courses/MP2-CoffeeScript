@@ -18,4 +18,5 @@ urlpatterns = [
 	url(r'^signup/$',views.create_user, name='signup'),
 	url(r'^viewitem/([0-9]+)/$',views.itemdetails,name='itemdetails'),
 	url(r'^search/$',views.search, name='search'),
+	url(r'^makeoffer/([0-9]+)/$',views.makeoffer, name='makeoffer'),
 ]
