@@ -1,0 +1,103 @@
+{% load staticfiles %}
+
+<html>
+    <head>
+        <title>NBMarketPlace</title>
+        <link rel="stylesheet" href="{% static 'marketplace/viewitem.css'%}">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
+		<script>
+			$(document).ready(function(){
+				$("#container3").hide();
+				
+				$(document).on('click','.text',function(){
+					enlargePhoto();
+                });
+				$(document).on('click','#close',function(){
+					goBack();
+                });
+			});
+			
+			function enlargePhoto(){
+					var photo = '{{posts.thumbnail.url}}';
+					console.log(photo)
+					$(".containerbody").hide();
+                    $("#container3").show();
+					$("#enlargegrid").append('<img id = "photo" src =' + photo + ' height = "800" width = "800" align="right"> ');
+					
+				
+			}
+			
+			function goBack(){
+				$(".containerbody").show();
+                $("#container3").hide();
+				$("#enlargegrid").empty();
+			}
+		</script>
+	</head>
+
+    <body>
+        <div class="containerhead">
+            <div class="navbar">
+               
+                <div class="navbarElements1">
+                    <a href="/marketplace/home/">Marketplace</a>
+                </div>
+                
+                <div class="navbarElements2">
+					{% if loggeduser %}
+					<div id="navbarelem"><a href="/marketplace/addpost" >Add a post</a></div>
+					<div id="navbarelem"><a href ="/marketplace/profile/{{ loggeduser.id}}">Hi, {{loggeduser.username}} !</a></div>
+					<div id="navbarelem"><a href="/marketplace/logout/">Log out</a></div>
+					{% else %}
+                    <div id="navbarelem"><a href="/marketplace/login/">Login</a></div>
+                    <div id="navbarelem"><a href="/marketplace/signup/">Sign Up</a></div>
+					{% endif %}
+                </div>
+            </div> 
+        </div>
+        </div>
+        
+        <div class="containerbody">
+            <div class="inner">
+                <div id="itemImage">
+					{% if posts.thumbnail %}
+						<img id = "photo" src="{{posts.thumbnail.url}}" class="image" height="700" width="700">
+					{% else%}
+						<img src={% static "marketplace/images/placeholder.jpg" %}/>
+					{%endif%}
+						<div class="middle">
+                        <a href="#" class="text">View Photo</a>
+                    </div>
+                </div>
+
+                <div id="details">
+                    <h2>{{posts.name}}</h2>
+                    <div id="item">
+                        <a href="/marketplace/profile/{{posts.user.id}}"><span>{{posts.user}}</span></a>
+                        <span>Quantity: {{posts.quantity}}</span>
+                        <span>Condition: {{posts.condition}}</span>
+                        <span>Type: {{posts.type}}</span>
+						{%if posts.type == 'Academic'%}
+                        <span>Course name: {{posts.course_name}}</span>
+						{% endif %}
+                        <span>{{posts.tag}} </span>
+                    </div>
+                </div>
+            </div>    
+        </div>
+        
+		<div id = "container3">
+			<div id="closegrid">
+				<button id = "close" style="margin-left: 1000px; margin-top: 25px; background: none; border: none; cursor: pointer;"><img src="/static/marketplace/images/close.png" style="width: 30px; height: 30px;"></button>
+			</div>
+            <div id="enlargegrid"></div>	
+		</div>
+        
+        
+        <div class="containerfooter">
+            
+        </div>
+        
+    </body>
+
+</html>
