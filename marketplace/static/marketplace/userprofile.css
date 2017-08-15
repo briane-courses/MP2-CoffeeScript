@@ -71,7 +71,6 @@ body {
     align-items: center;
     background-color: #E8F6F3;
     padding: 20px;
-    border: 15px solid #F1948A;
 }
 
 .userdetails {
@@ -98,7 +97,7 @@ body {
     display: flex;
     flex-direction: row;
     flex-flow: wrap;
-    width: 100%;
+    width: 1100px;
     margin: 0px 20px;
 }
 
@@ -109,7 +108,7 @@ body {
 }
 
 .posts {
-    margin: 40px;
+    margin: 10px;
 }
 
 #posts {
@@ -117,7 +116,6 @@ body {
 }
 
 .thumbnail{
-    background-color: #F1948A;
     padding: 10px;
     font-family: Roboto;
 	width: 306px;
@@ -210,6 +208,27 @@ input[type=text]:focus {
 
 .buttons .btn:hover{
     padding: 10px 112px;
+}
+
+.postbox {
+	display: flex;
+	flex-direction: row;
+}
+
+.offersbox {
+	width: 100%;
+	margin-right: 20px;
+}
+
+#offer {
+	background: #fefefe;
+	display: flex;
+	flex-direction: column;
+	padding: 20px;
+}
+
+#offer p {
+	margin: 0px;
 }
 
 

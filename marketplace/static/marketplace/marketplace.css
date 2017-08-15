@@ -224,6 +224,10 @@ input[type=text]:focus {
 	justify-content: flex-end;
 }
 
+.offerbutton .btn {
+	cursor: pointer;
+}
+
 #quote {
 	font-family: LeagueSpartan;
 	text-align: center;
