@@ -2,6 +2,7 @@ from django import forms
 
 from .models import User
 from .models import Posts
+from .models import Offer
 
 class PostForm(forms.ModelForm):
 	
@@ -29,3 +30,9 @@ class SearchForm(forms.ModelForm):
 	class Meta:
 		model = Posts
 		fields = ['tag']
+		
+class OfferForm(forms.ModelForm):
+
+	class Meta:
+		model = Offer
+		fields = '__all__'

@@ -177,3 +177,16 @@ def search(request):
 def makeoffer(request,post_id):
 
 	return render(request, 'marketplace/makeoffer.html', {})
+	
+def filters(request,post_id):
+	form = SearchForm(request.POST)
+	all_posts = Posts.objects.all()
+	choice = Posts.objects.get(pk=post_id)
+	query = choice.condition
+
+	try:
+		loggeduser = User.objects.get(id=request.session['USERZ'])
+	except (KeyError, User.DoesNotExist):
+		loggeduser = None
+		
+	return render(request, 'marketplace/filters.html', {'query':query, 'all_posts':all_posts,'loggeduser':loggeduser,'form':form})

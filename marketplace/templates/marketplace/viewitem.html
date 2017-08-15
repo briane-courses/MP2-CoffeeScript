@@ -75,12 +75,12 @@
                     <div id="item">
                         <a href="/marketplace/profile/{{posts.user.id}}"><span>{{posts.user}}</span></a>
                         <span>Quantity: {{posts.quantity}}</span>
-                        <span>Condition: {{posts.condition}}</span>
+                        <span>Condition: <a href="/marketplace/filters/{{posts.id}}"}>{{posts.condition}}</a></span>
                         <span>Type: {{posts.type}}</span>
 						{%if posts.type == 'Academic'%}
                         <span>Course name: {{posts.course_name}}</span>
 						{% endif %}
-                        <span>{{posts.tag}} </span>
+                        <a href="/marketplace/filters/{{posts.id}}"}><span>{{posts.tag}} </span></a>
                     </div>
                 </div>
             </div>    

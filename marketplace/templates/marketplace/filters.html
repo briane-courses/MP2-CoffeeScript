@@ -1,0 +1,98 @@
+{% load staticfiles %}
+<html>
+    <head>
+        <title>NBMarketPlace</title>
+        <link rel="stylesheet" href="{% static 'marketplace/marketplace.css'%}">
+    </head>
+
+    <body>
+        <div class="containerhead">
+            <div class="navbar">
+               
+                <div class="navbarElements1">
+                    <a href="/marketplace/home/">Marketplace</a>
+                </div>
+                
+                <div class="navbarElements2">
+					{% if loggeduser %}
+					<div id="navbarelem"><a href="/marketplace/addpost" >Add a post</a></div>
+					<div id="navbarelem"><a href ="/marketplace/profile/{{ loggeduser.id}}">Hi, {{loggeduser.username}} !</a></div>
+					<div id="navbarelem"><a href="/marketplace/logout/">Log out</a></div>
+					{% else %}
+                    <div id="navbarelem"><a href="/marketplace/login/">Login</a></div>
+                    <div id="navbarelem"><a href="/marketplace/signup/">Sign Up</a></div>
+					{% endif %}
+                </div>
+            </div> 
+        </div>
+		
+		<div class="itemfilter">
+		
+			<div id="searchbar">
+				<form method="POST" class="post-form" enctype='multipart/form-data'>
+					{% csrf_token %}
+					<div class="inputF">
+						{{ form }} 
+						<button type="submit" value="Search" class="button">Search</button>
+
+					</div>
+				</form>
+			</div>
+			
+          </div>
+        
+        <div class="adjustbar">
+            <p>No. of Items: </p>
+            <select>
+                <option value="10">10</option>
+                <option value="15">15</option>
+                <option value="15">20</option>
+            </select>
+        </div>
+        {% if query != '' %}
+		<div id="quote"><h1> You searched for {{query}} </h1></div>
+		{%endif%}
+        <div class="containerbody">
+			{%if query == 'Brand new' or 'Used' or 'Damaged'%}
+            <div class="row">
+                      {% for post in all_posts %}
+					   {% if post.condition == query %}
+                        <div class="thumbnail">
+                            <div>
+							{% if post.thumbnail %}
+								<a href="/marketplace/viewitem/{{post.id}}/"><img id="productImage" src={{ post.thumbnail.url }}/></a>
+							{% else %}
+								<a href ="/marketplace/viewitem/{{post.id}}/"><img id="productImage" src={% static "marketplace/images/placeholder.jpg" %}/></a>
+							{% endif %}
+							</div>
+                            <div id="productDetails">
+                                <a href="/marketplace/profile/{{post.user.id}}">{{post.user}}</a><br><br>
+                                <h3>{{post.name}}</h3>
+                            </div>
+                            <div class="buttonrow">
+                                
+                                <div class="col-xs-12 col-md-6">
+                                    <button class="btn btn-success" href="#">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+					  {%endif%}
+                      {% endfor %}
+					  {%endif%}
+            </div>
+      
+            
+            
+        </div>
+        
+        <div class="seemore">
+            <button id="more">See More</button>
+        </div>
+        
+        <div class="containerfooter">
+            
+        </div>
+        
+    </body>
+
+</html>

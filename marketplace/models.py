@@ -66,7 +66,7 @@ class Offer(models.Model):
 	)
 	
 	BidAmount = models.FloatField(default=0.0)
-	#offer_post = models.ForeignKey(Posts, on_delete=models.CASCADE)
+	#offer_post = models.ForeignKey(Posts, on_delete=models.CASCADE, related_name = '+')
 	
 	def __str__(self):
 		return self.title

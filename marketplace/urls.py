@@ -19,4 +19,5 @@ urlpatterns = [
 	url(r'^viewitem/([0-9]+)/$',views.itemdetails,name='itemdetails'),
 	url(r'^search/$',views.search, name='search'),
 	url(r'^makeoffer/([0-9]+)/$',views.makeoffer, name='makeoffer'),
+	url(r'^filters/([0-9]+)/$',views.filters, name='filters'),
 ]
