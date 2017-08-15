@@ -105,8 +105,11 @@
         </div>
         
         <div class="seemore">
-            <button id="more">See More</button>
-        </div>
+            <!-- <button id="more">See More</button> -->
+			<form method = 'POST'> {% csrf_token %}
+			<input type="submit" name= "more" id="more" value="See more"/>
+			</form>
+		</div>
         
         <div class="containerfooter">
             
