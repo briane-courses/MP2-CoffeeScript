@@ -9,6 +9,7 @@ from django.shortcuts import redirect,reverse
 from marketplace.forms import PostForm, LoginForm, RegForm, SearchForm
 from .models import User
 from .models import Posts
+from .models import Offer
 
 # Create your views here.
 

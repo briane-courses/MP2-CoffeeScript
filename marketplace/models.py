@@ -50,4 +50,24 @@ class Posts(models.Model):
 	
 	def __str__(self):
 		return self.name
+
+class Offer(models.Model):
+	title = models.CharField(max_length=100, default='')
+	post_To = models.ForeignKey(Posts, on_delete=models.CASCADE, default=1)
+	user_Offer = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
+	offerchoices = (
+		('Exchange', 'Swap'),
+		('Purchase', 'Buy')
+	)
+	OfferType = models.CharField(
+		max_length=15,
+		choices = offerchoices, 
+		default = 'Buy'
+	)
+	
+	BidAmount = models.FloatField(default=0.0)
+	#offer_post = models.ForeignKey(Posts, on_delete=models.CASCADE)
+	
+	def __str__(self):
+		return self.title
 	
