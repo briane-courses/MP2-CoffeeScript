@@ -4,6 +4,30 @@
         <title>NBMarketPlace</title>
         <link rel="stylesheet" type="text/css" href="{% static 'marketplace/userprofile.css'%}"/>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
+		
+		<script>
+			$(document).ready(function(){
+				$("#container3").hide();
+				
+				$(document).on('click','.detailoffer', function(){
+					enlargeGrid();
+				});
+				$(document).on('click', '#close', function(){
+					goBack();
+				});
+			});
+			
+			function enlargeGrid(){
+				$(".maincontainer").hide();
+				$("#container3").show();
+			}
+			function goBack(){
+				$(".maincontainer").show();
+				$("#container3").hide();
+			}
+			
+
+		</script>
     </head>
 
     <body>
@@ -28,85 +52,89 @@
         </div>
 		
 		
-        
-        <div class="containerbody">
-            <div class="userdetails">
-                {% if user.profile_pic %}
-                <a><img src={{ user.profile_pic.url }}/></a>
-				{% else %}
-				<div><img src={% static "marketplace/images/placeholder.jpg" %}/></div>
-				{% endif %}
-                <div id="userdets">
-                    <span>{{user.firstName}} {{user.lastName}}</span>
-                    <span>{{user.username}}</span>
-                    <span>{{user.type}}</span>
-                </div>
-            </div>
-        </div>
-		
-		<div class="itemfilter">
-		
-			<div id="searchbar">
-				<form method="POST" class="post-form" enctype='multipart/form-data'>
-					{% csrf_token %}
-					<div class="inputF">
-						{{ form }} 
-						<button type="submit" value="Search" class="button">Search</button>
-
+        <div class="maincontainer">
+			<div class="containerbody">
+				<div class="userdetails">
+					{% if user.profile_pic %}
+					<a><img src={{ user.profile_pic.url }}/></a>
+					{% else %}
+					<div><img src={% static "marketplace/images/placeholder.jpg" %}/></div>
+					{% endif %}
+					<div id="userdets">
+						<span>{{user.firstName}} {{user.lastName}}</span>
+						<span>{{user.username}}</span>
+						<span>{{user.type}}</span>
 					</div>
-				</form>
+				</div>
 			</div>
 			
-          </div>
-		  <div class="postbox">
-			<div class="posts">
-			<h1>Posts</h1>
-				<div class="row">
-					
-							{% for posts in user.posts_set.all %}
-						<div id="posts">
-							<div class="thumbnail">
-								{% if posts.thumbnail %}
-								<a href="/marketplace/viewitem/{{posts.id}}/"><img id="productImage" src={{ posts.thumbnail.url }}/></a>
-								{% else %}
-								<a href="/marketplace/viewitem/{{posts.id}}/"><img id="productImage" src={% static "marketplace/images/placeholder.jpg" %}/></a>
-								{% endif %}
-								<div id="productDetails">
-								
-									<a href="/marketplace/profile/{{ user.id}}">{{user.username}}</a><br><br>
-								<!-- Change post name to a href for item details -->
-									<h3>{{posts.name}}</h3>
-	  
+			<div class="itemfilter">
+				<div id="searchbar">
+					<form method="POST" class="post-form" enctype='multipart/form-data'>
+						{% csrf_token %}
+						<div class="inputF">
+							{{ form }} 
+							<button type="submit" value="Search" class="button">Search</button>
+
+						</div>
+					</form>
+				</div>
+			  </div>
+			  
+			  <div class="postbox">
+				<div class="posts">
+				<h1>Posts</h1>
+					<div class="row">
 						
-								</div>
-								<div class="contRow">
-									<div class="buttons">
-										<button class="btn btn-success" href="#">Make an offer</button>
+								{% for posts in user.posts_set.all %}
+							<div id="posts">
+								<div class="thumbnail">
+									{% if posts.thumbnail %}
+									<a href="/marketplace/viewitem/{{posts.id}}/"><img id="productImage" src={{ posts.thumbnail.url }}/></a>
+									{% else %}
+									<a href="/marketplace/viewitem/{{posts.id}}/"><img id="productImage" src={% static "marketplace/images/placeholder.jpg" %}/></a>
+									{% endif %}
+									<div id="productDetails">
+									
+										<a href="/marketplace/profile/{{ user.id}}">{{user.username}}</a><br><br>
+									<!-- Change post name to a href for item details -->
+										<h3>{{posts.name}}</h3>
+		  
+							
+									</div>
+									<div class="contRow">
+										<div class="buttons">
+											<button class="btn btn-success" href="#">Make an offer</button>
+										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-							{% endfor %}
-					
-				</div>
-					
-			</div>
-			
-			<div class="offersbox">
-				<div>
-					<h1>Offers</h1>
-					<div id="offer">
-						<h2 style="margin: 0;"><a href="">Offer Name</a></h2>
-						<p>Username<p>
-						
+								{% endfor %}
 						
 					</div>
+						
 				</div>
-			
+				
+				<div class="offersbox">
+					<div>
+						<h1>Offers</h1>
+						<div id="offer">
+							<h2 style="margin: 0;"><a href="" class="detailoffer">Offer Name</a></h2>
+							<p>Username</p>
+						</div>
+					</div>			
+				</div>
 			</div>
 		</div>
+		
+		<div id = "container3">
+			<div id="closegrid">
+				<button id = "close" style="margin-left: 1000px; margin-top: 25px; background: none; border: none; cursor: pointer;"><img src="/static/marketplace/images/close.png" style="width: 30px; height: 30px;"></button>
+			</div>
+			<div id="enlargegrid"></div>
+		</div>
         
-        <div class="containerfooter">
+		<div class="containerfooter">
         </div>
         
     </body>
