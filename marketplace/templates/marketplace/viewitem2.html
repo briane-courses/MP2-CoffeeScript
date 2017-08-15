@@ -3,39 +3,49 @@
 <html>
     <head>
         <title>NBMarketPlace</title>
-        <link rel="stylesheet" href="{% static 'marketplace/viewitem.css'%}">
+        <link rel="stylesheet" href="{% static 'marketplace/viewitem2.css'%}">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
-		<script>
-			$(document).ready(function(){
-				$("#container3").hide();
-				
-				$(document).on('click','.text',function(){
-					enlargePhoto();
-                });
-				$(document).on('click','#close',function(){
-					goBack();
-                });
-			});
-			
-			function enlargePhoto(){
-					var photo = '{{posts.thumbnail.url}}';
-					console.log(photo)
-					$(".containerbody").hide();
-                    $("#container3").show();
-					$("#enlargegrid").append('<img id = "photo" src =' + photo + ' height = "800" width = "800" align="right"> ');
-					
-				
-			}
-			
-			function goBack(){
-				$(".containerbody").show();
-                $("#container3").hide();
-				$("#enlargegrid").empty();
-			}
-		</script>
 	</head>
 
     <body>
+	
+	
+	<div id = "container3">
+			<div id = "subcont">
+				<div id="closegrid">
+					<a href = "/marketplace/viewitem/{{posts.id}}"><button id = "close" style="margin-left: 1700px; margin-top: 25px; background: none; border: none; cursor: pointer;"><img src="/static/marketplace/images/close.png" style="width: 30px; height: 30px;"></button></a>
+				</div>
+				<div id="enlargegrid">
+				<center>
+				<p>Title: {{offer.title}}</p>
+				<p>Offer by: {{offer.user_Offer}}</p>
+				<p>Status: {{offer.OfferStat}}</p>
+				<p>Type: {{offer.OfferType}}</p>
+				{% if offer.OfferType == 'Exchange' %}
+				<p>Trade {{offer.post_To}} for {{offer.offer_post}}</p>
+				{% elif offer.OfferType == 'Purchase'%}
+				<p>Willing to pay {{offer.BidAmount}}</p>
+				{%endif%}
+				{%if offer.reason%}
+				<p>Reason: {{offer.reason}}</p>
+				{%endif%}
+				{% for post in all_posts %}
+				{%if offer.offer_post|stringformat:"s" == post.name%}
+					<a href="/marketplace/viewitem/{{posts.id}}/"><img height = "175" width="175"id="productImage" src={{ post.thumbnail.url }}/></a>
+				{%endif%}
+				{%endfor%}
+				
+				</center>
+				</div>
+				<div id="buttons">
+					<a href = '/marketplace/update/{{offer.id}}'><button id="Update">Update</button><a>
+					<form method = 'POST'> {% csrf_token %}
+					<button type="submit" name= "Cancel" id="Cancel" value="Cancel"/>Cancel</button>
+					</form>
+				</div>
+			</div>
+</div>
+	<div id ="aye">
         <div class="containerhead">
             <div class="navbar">
                
@@ -55,7 +65,7 @@
                 </div>
             </div> 
         </div>
-        </div>
+        
         
         <div class="containerbody">
             <div class="inner">
@@ -65,9 +75,6 @@
 					{% else%}
 						<img src={% static "marketplace/images/placeholder.jpg" %}/>
 					{%endif%}
-						<div class="middle">
-                        <a href="#" class="text">View Photo</a>
-                    </div>
                 </div>
 
                 <div id="details">
@@ -84,34 +91,10 @@
                     </div>
                 </div>
             </div>
-			{%if loggeduser.username %}
-			{%if loggeduser.username|stringformat:"s" != posts.user|stringformat:"s" %}
-				<div class="offersbox">
-					<div>
-						<h1>Your Offer/s</h1>
-						<div id="offer">
-							{%for offer in all_offers%}
-								{%if offer.user_Offer|stringformat:"s" == loggeduser.username%}
-								{%if offer.post_To|stringformat:"s" == posts.name %}
-							<h2 style="margin: 0;"><a href="{{offer.id}}" class="detailoffer">{{offer.title}}</a></h2>
-							<p>{{offer.user_Offer}}</p>
-							{%endif%}{%endif%}
-							{%endfor%}
-						</div>
-					</div>			
-				</div>
-        {%endif%} {%endif%}
-        </div>
-        
-		<div id = "container3">
-			<div id="closegrid">
-				<button id = "close" style="margin-left: 1000px; margin-top: 25px; background: none; border: none; cursor: pointer;"><img src="/static/marketplace/images/close.png" style="width: 30px; height: 30px;"></button>
-			</div>
-            <div id="enlargegrid"></div>	
-		</div>
-		
 
-        
+		
+	</div>
+       </div> 
         <div class="containerfooter">
             
         </div>

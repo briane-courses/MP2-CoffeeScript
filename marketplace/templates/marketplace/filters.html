@@ -53,7 +53,7 @@
 		<div id="quote"><h1> You searched for {{query}} </h1></div>
 		{%endif%}
         <div class="containerbody">
-			{%if query == 'Brand new' or 'Used' or 'Damaged'%}
+			{%if query == 'Brand new' or 'Second hand' or 'Damaged'%}
             <div class="row">
                       {% for post in all_posts %}
 					   {% if post.condition == query %}
@@ -79,6 +79,60 @@
 					  {%endif%}
                       {% endfor %}
 					  {%endif%}
+            </div>
+			{%if query == 'Academics' or 'Office' %}
+            <div class="row">
+                      {% for post in all_posts %}
+					   {% if post.type == query %}
+                        <div class="thumbnail">
+                            <div>
+							{% if post.thumbnail %}
+								<a href="/marketplace/viewitem/{{post.id}}/"><img id="productImage" src={{ post.thumbnail.url }}/></a>
+							{% else %}
+								<a href ="/marketplace/viewitem/{{post.id}}/"><img id="productImage" src={% static "marketplace/images/placeholder.jpg" %}/></a>
+							{% endif %}
+							</div>
+                            <div id="productDetails">
+                                <a href="/marketplace/profile/{{post.user.id}}">{{post.user}}</a><br><br>
+                                <h3>{{post.name}}</h3>
+                            </div>
+                            <div class="buttonrow">
+                                
+                                <div class="col-xs-12 col-md-6">
+                                    <button class="btn btn-success" href="#">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+					  {%endif%}
+                      {% endfor %}
+					  
+            </div>
+			 {%endif%}
+            <div class="row">
+                      {% for post in all_posts %}
+					   {% if post.course_name|stringformat:"s" == query %}
+                        <div class="thumbnail">
+                            <div>
+							{% if post.thumbnail %}
+								<a href="/marketplace/viewitem/{{post.id}}/"><img id="productImage" src={{ post.thumbnail.url }}/></a>
+							{% else %}
+								<a href ="/marketplace/viewitem/{{post.id}}/"><img id="productImage" src={% static "marketplace/images/placeholder.jpg" %}/></a>
+							{% endif %}
+							</div>
+                            <div id="productDetails">
+                                <a href="/marketplace/profile/{{post.user.id}}">{{post.user}}</a><br><br>
+                                <h3>{{post.name}}</h3>
+                            </div>
+                            <div class="buttonrow">
+                                
+                                <div class="col-xs-12 col-md-6">
+                                    <button class="btn btn-success" href="#">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+					  {%endif%}
+                      {% endfor %}
+					  
             </div>
       
             

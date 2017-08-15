@@ -31,8 +31,27 @@ class SearchForm(forms.ModelForm):
 		model = Posts
 		fields = ['tag']
 		
-class OfferForm(forms.ModelForm):
+class AcceptForm(forms.ModelForm):
 
 	class Meta:
 		model = Offer
-		fields = '__all__'
+		fields = ['reason']	
+		
+class OfferBuyForm(forms.ModelForm):
+
+	class Meta:
+		model = Offer
+		fields = ['title', 'BidAmount']
+		
+class OfferSwapForm(forms.ModelForm):
+
+	class Meta:
+		model = Offer
+		fields = ['title', 'offer_post']	
+	
+	#def __init__(self,*args,**kwargs):
+	#	User = kwargs.pop("user")
+	#	self.fields['offer_post'].queryset = Posts.objects.filter(User = user)
+	
+	
+	

@@ -64,10 +64,20 @@ class Offer(models.Model):
 		choices = offerchoices, 
 		default = 'Buy'
 	)
-	
+	statuses = (
+		('Pending','Pending'),
+		('Accept', 'Accept'),
+		('Decline','Decline')
+	)
+	OfferStat = models.CharField(
+		max_length = 8,
+		choices = statuses,
+		default = 'Pending'
+	)
 	BidAmount = models.FloatField(default=0.0)
-	offer_post = models.ForeignKey(Posts, on_delete=models.CASCADE, related_name = '+')
-	
+	offer_post = models.ForeignKey(Posts, on_delete=models.CASCADE, related_name = '+', null=True,blank=True)
+	reason = models.CharField(max_length=100, null=True,blank=True)
+	date = models.DateTimeField(auto_now_add = True)
 	def __str__(self):
 		return self.title
 	

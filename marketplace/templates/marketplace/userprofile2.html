@@ -2,35 +2,44 @@
 <html>
     <head>
         <title>NBMarketPlace</title>
-        <link rel="stylesheet" type="text/css" href="{% static 'marketplace/userprofile.css'%}"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'marketplace/userprofile2.css'%}"/>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
 		
-		<script>
-			$(document).ready(function(){
-				$("#container3").hide();
-				
-				$(document).on('click','.detailoffer', function(){
-					enlargeGrid();
-				});
-				$(document).on('click', '#close', function(){
-					goBack();
-				});
-			});
-			
-			function enlargeGrid(){
-				$(".maincontainer").hide();
-				$("#container3").show();
-			}
-			function goBack(){
-				$(".maincontainer").show();
-				$("#container3").hide();
-			}
-			
-
-		</script>
     </head>
 
     <body>
+
+	<div id = "container3">
+			<div id = "subcont">
+				<div id="closegrid">
+					<a href = "/marketplace/profile/{{user.id}}"><button id = "close" style="margin-left: 1700px; margin-top: 25px; background: none; border: none; cursor: pointer;"><img src="/static/marketplace/images/close.png" style="width: 30px; height: 30px;"></button></a>
+				</div>
+				<div id="enlargegrid">
+				<center>
+				<p>Title: {{offer.title}}</p>
+				<p>Offer by: {{offer.user_Offer}}</p>
+				<p>Type: {{offer.OfferType}}</p>
+				{% if offer.OfferType == 'Exchange' %}
+				<p>Trade {{offer.post_To}} for {{offer.offer_post}}</p>
+				{% elif offer.OfferType == 'Purchase'%}
+				<p>Willing to pay {{offer.BidAmount}}</p>
+				{%endif%}
+				
+				{% for posts in all_posts %}
+				{%if offer.offer_post|stringformat:"s" == posts.name%}
+					<a href="/marketplace/viewitem/{{posts.id}}/"><img height = "175" width="175"id="productImage" src={{ posts.thumbnail.url }}/></a>
+				{%endif%}
+				{%endfor%}
+				
+				</center>
+				</div>
+				<div id="buttons">
+					<a href = '/marketplace/accept/{{user.id}}/{{offer.id}}'><button id="accept">Accept</button></a>
+					<a href = '/marketplace/decline/{{user.id}}/{{offer.id}}'><button id="decline">Decline</button></a>
+				</div>
+			</div>
+</div>
+	<div id="aye">
         <div class="containerhead">
             <div class="navbar">
         
@@ -104,9 +113,7 @@
 									</div>
 									<div class="contRow">
 										<div class="buttons">
-											{%if loggeduser%}
-											<a href="/marketplace/makeoffer/{{posts.id}}"><button class="btn btn-success">Make an offer</button></a>
-											{%endif%}
+											<button class="btn btn-success" href="#">Make an offer</button>
 										</div>
 									</div>
 								</div>
@@ -116,41 +123,12 @@
 					</div>
 						
 				</div>
-				{%if user.username == loggeduser.username %}
-				<div class="offersbox">
-					<div>
-						<h1>Offers</h1>
-						<div id="offer">
-							{%for offer in all_offers%}
-							{% for posts in user.posts_set.all %}
-							{%if offer.post_To|stringformat:"s" == posts.name%}
-							<h2 style="margin: 0;"><a href="{{offer.id}}" class="detailoffer">{{offer.title}}</a></h2>
-							<p>{{offer.user_Offer}}</p>
-							{%endif%}
-							{%endfor%}{%endfor%}
-						</div>
-						
-					</div>			
-				</div>
-			</div>
-		</div>
-		
-		<div id = "container3">
-			<div id = "subcont">
-				<div id="closegrid">
-					<button id = "close" style="margin-left: 1000px; margin-top: 25px; background: none; border: none; cursor: pointer;"><img src="/static/marketplace/images/close.png" style="width: 30px; height: 30px;"></button>
-				</div>
-				<div id="enlargegrid"></div>
-				<div id="buttons">
-					<button id="accept">Accept</button>
-					<button id="decline">Decline</button>
-				</div>
-			</div>
-		</div>
-        {%endif%}
+				
+	
+        
 		<div class="containerfooter">
         </div>
-        
+        </div>
     </body>
 
 </html>

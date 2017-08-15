@@ -2,12 +2,13 @@
 <html>
     <head>
         <title>NBMarketPlace</title>
-        <link rel="stylesheet" href="{% static 'marketplace/makeoffer.css' %}">
+        <link rel="stylesheet" href="{% static 'marketplace/addpost.css' %}">
     </head>
 
     <body>
         <div class="containerhead">
             <div class="navbar">
+               
                
                 <div class="navbarElements1">
                     <a href="/marketplace/home/">Marketplace</a>
@@ -25,18 +26,10 @@
                 </div>
             </div> 
         </div>
-		
-		<div class="containerbody" >
-			<div class="offerbox" >
-				<h1>Make an Offer</h1>
-				<form method = 'POST'>
-				{% csrf_token %}
-					<select id="selectoffer" name="offertype" onchange="this.form.submit()"> 
-						<option value="Swap">Exchange Item</option>
-						<option value="Buy">Purchase Item</option>
-					</select>
-				</form>
-				<!------------offer here--------------->
+        
+        <div class="containerbody">
+            <div class="postDetails">
+                <h1>Why?</h1>
 				<form method="POST" class="post-form" enctype='multipart/form-data'>
 				{% csrf_token %}
 				{% for field in form %}
@@ -45,11 +38,14 @@
 					<div class="inputF">{{ field }}</div>
 				</div>
 				{% endfor %}
-				<div class="buttonbox"><button type="submit">Post!</button></div>
+				<div class="buttonbox">
+				<h2>Are you really sure?<h2>
+				<button type="submit">Yes</button>
+				<a href='/marketplace/home/'><button>No. I'll think about it</button><a>
+				</div>
 				</form>
-			</div>
-		</div>
-        
+            </div>
+        </div>
         
         <div class="containerfooter">
             

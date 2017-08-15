@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>NBMarketPlace</title>
-        <link rel="stylesheet" href="{% static 'marketplace/makeoffer.css' %}">
+        <link rel="stylesheet" href="{% static 'marketplace/addpost.css' %}">
     </head>
 
     <body>
@@ -28,7 +28,7 @@
 		
 		<div class="containerbody" >
 			<div class="offerbox" >
-				<h1>Make an Offer</h1>
+				<h1>Update Offer</h1>
 				<form method = 'POST'>
 				{% csrf_token %}
 					<select id="selectoffer" name="offertype" onchange="this.form.submit()"> 
@@ -45,7 +45,7 @@
 					<div class="inputF">{{ field }}</div>
 				</div>
 				{% endfor %}
-				<div class="buttonbox"><button type="submit">Post!</button></div>
+				<div class="buttonbox"><button type="submit">Update!</button></div>
 				</form>
 			</div>
 		</div>

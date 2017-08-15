@@ -19,6 +19,10 @@ body {
     background-color: #E8F6F3;
 }
 
+#aye{
+	opacity:0.4;
+}
+
 .navbar {
 	display: flex;
     justify-content: space-between;
@@ -238,9 +242,10 @@ input[type=text]:focus {
 }
 
 #container3 {
-	display: flex;
-	justify-content: center;
-	flex-direction: row;
+	position: relative;
+	background: white;
+	height: 500px;
+
 }
 
 #buttons {
@@ -262,5 +267,9 @@ input[type=text]:focus {
 	background: none;
 	border: 3px solid rgb(28, 184, 65);
 	color: rgb(28, 184, 65);
+}
+
+#enlargegrid{
+	justify-content: center;
 }
 

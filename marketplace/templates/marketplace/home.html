@@ -93,7 +93,9 @@
                                 <div class="buttonrow">
 
                                     <div class="offerbutton">
+										{%if loggeduser%}
                                         <a href="/marketplace/makeoffer/{{post.id}}"><button class="btn btn-success">Make an offer</button></a>
+										{%endif%}
                                     </div>
                             </div>
                         </div>
@@ -104,7 +106,7 @@
             
         </div>
         
-        <div class="seemore">
+       <div class="seemore">
             <!-- <button id="more">See More</button> -->
 			<form method = 'POST'> {% csrf_token %}
 			<input type="submit" name= "more" id="more" value="See more"/>
