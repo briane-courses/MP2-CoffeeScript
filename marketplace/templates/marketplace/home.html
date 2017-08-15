@@ -94,8 +94,9 @@
 
                                     <div class="offerbutton">
 										{%if loggeduser%}
+										{%if loggeduser != post.user%}
                                         <a href="/marketplace/makeoffer/{{post.id}}"><button class="btn btn-success">Make an offer</button></a>
-										{%endif%}
+										{%endif%}{%endif%}
                                     </div>
                             </div>
                         </div>
