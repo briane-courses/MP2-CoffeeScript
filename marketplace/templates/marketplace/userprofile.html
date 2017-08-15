@@ -7,26 +7,26 @@
 		
 		<script>
 			$(document).ready(function(){
-				$("#container3").hide();
+			
+			$("#container3").hide();
 				
-				$(document).on('click','.detailoffer', function(){
-					enlargeGrid();
+				$(document).on('click','#wew',function(){
+					popout();
 				});
-				$(document).on('click', '#close', function(){
+				$(document).on('click','#close',function(){
 					goBack();
 				});
 			});
 			
-			function enlargeGrid(){
+			function popout(){
 				$(".maincontainer").hide();
 				$("#container3").show();
 			}
-			function goBack(){
-				$(".maincontainer").show();
-				$("#container3").hide();
-			}
 			
-
+			function goBack(){
+				$("#container3").hide();
+				$(".maincontainer").show();
+			}
 		</script>
     </head>
 
@@ -119,7 +119,7 @@
 					<div>
 						<h1>Offers</h1>
 						<div id="offer">
-							<h2 style="margin: 0;"><a href="" class="detailoffer">Offer Name</a></h2>
+							<h2 style="margin: 0;"><a href="#" class="detailoffer" id="wew">Offer Name</a></h2>
 							<p>Username</p>
 						</div>
 					</div>			
